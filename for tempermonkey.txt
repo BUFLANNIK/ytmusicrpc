@@ -1,0 +1,50 @@
+// ==UserScript==
+// @name         YouTube Music to Go RPC
+// @namespace    http://tampermonkey.net
+// @version      2.2
+// @description  Track sender script to localhost:8080
+// @author       You
+// @match        https://music.youtube.com/*
+// @run-at       document-end
+// @grant        GM_xmlhttpRequest
+// ==/UserScript==
+
+(function() {
+    'use strict';
+
+    let lastTrack = "";
+
+    function checkTrack() {
+        const titleEl = document.querySelector('.ytmusic-player-bar .title');
+        const artistEl = document.querySelector('.ytmusic-player-bar .byline');
+        const imgEl = document.querySelector('ytmusic-player-bar img');
+        if (titleEl && artistEl) {
+            const title = titleEl.textContent.trim();
+            const artist = artistEl.textContent.trim();
+            const currentTrack = title + " - " + artist;
+
+            if (currentTrack !== lastTrack && title !== "") {
+                lastTrack = currentTrack;
+
+                GM_xmlhttpRequest({
+                    method: "POST",
+                    url: "http://localhost:8080/track",
+                    headers: { "Content-Type": "application/json" },
+                    data: JSON.stringify({
+                        title: title,
+                        artist: artist,
+                        img: imgEl ? imgEl.src : ""
+                    }),
+                    onload: function(response) {
+                        console.log("Send to Go: " + currentTrack);
+                    },
+                    onerror: function(err) {
+                        console.log("Go server not responding on localhost:8080");
+                    }
+                });
+            }
+        }
+    }
+
+    setInterval(checkTrack, 2000);
+})();
