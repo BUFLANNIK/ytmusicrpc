@@ -1,0 +1,6 @@
+github.com/altfoxie/drpc v0.0.0-20251029175103-30d5f68745fb h1:mHOskMxVi4TETDDNSRJ5avvAAuUcQlawh1Wh9xpy6Es=
+github.com/altfoxie/drpc v0.0.0-20251029175103-30d5f68745fb/go.mod h1:vV4ApNpKIGN4PT5NYmWqw1IEIsFzqj0pspTUSltS+gk=
+github.com/google/uuid v1.6.0 h1:NIvaJDMOsjHA8n1jAhLSgzrAzy1Hgr+hNrb57e+94F0=
+github.com/google/uuid v1.6.0/go.mod h1:TIyPZe4MgqvfeYDBFedMoGGpEw/LqOeaOT+nhxU+yHo=
+gopkg.in/natefinch/npipe.v2 v2.0.0-20160621034901-c1b8fa8bdcce h1:+JknDZhAj8YMt7GC73Ei8pv4MzjDUNPHgQWJdtMAaDU=
+gopkg.in/natefinch/npipe.v2 v2.0.0-20160621034901-c1b8fa8bdcce/go.mod h1:5AcXVHNjg+BDxry382+8OKon8SEWiKktQR07RKPsv1c=
